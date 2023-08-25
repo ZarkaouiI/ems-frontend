@@ -1,0 +1,18 @@
+<div class="m-4 rounded-lg p-7 shadow-lg shadow-rose-300 border-2 border-sky-400 hover:bg-teal-100">
+    <div class="flex justify-center">
+        <img class="m-2 rounded-full border-2 border-rose-700" src="../../assets/gray-cat-logo.jpeg"
+            alt="Profile photo if any exists" style="width: 90px;">
+    </div>
+    <hr>
+    <div class="text-center mt-3">
+        <h1 class="mb-2 font-medium tracking-wider text-slate-900">{{firstName}} {{lastName}}</h1>
+        <a class="font-light" href="mailto:{{email}}">{{email}}</a>
+    </div>
+    <hr>
+    <div class="flex justify-between mt-3">
+        <button class="py-1 px-3 rounded-lg bg-sky-300 hover:bg-green-500 text-slate-900" (click)="onEditEmployee(id)">Edit</button>
+        <button class="py-1 px-3 rounded-lg bg-rose-300 hover:bg-red-500 text-slate-900" (click)="onDeleteEmployee(id)">
+            Delete
+        </button>
+    </div>
+</div>

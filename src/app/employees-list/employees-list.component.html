@@ -1,0 +1,11 @@
+<div class="container mx-auto my-8">
+    <h2 class="bg-sky-300 p-2 font-bold tracking-widest text-2xl my-7 text-center">Employees List</h2>
+    <div class="items-center justify-center h-14 w-full my-7 space-x-5" *ngIf="isLoading">
+        <app-loading-spinner></app-loading-spinner>
+    </div>
+    <!-- cards -->
+    <div class="container mx-auto flex flex-wrap justify-center" *ngIf="!isLoading">
+        <app-employee-card (employeeDeleted)="deleteEmployee($event)" class="md:w-1/3" *ngFor="let emp of employees;" [id]="emp.id"
+            [firstName]="emp.firstName" [lastName]="emp.lastName" [email]="emp.email"></app-employee-card>
+    </div>
+</div>
