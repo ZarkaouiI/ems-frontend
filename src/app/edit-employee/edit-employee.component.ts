@@ -22,6 +22,8 @@ export class EditEmployeeComponent implements OnInit, OnDestroy {
   successMessage: string = '';
   errorMessage: string = '';
 
+  profilePhoto : any;
+
   updateEmployeeForm!: FormGroup;
 
   constructor(private employeeService: EmployeeService, private router: Router, private route: ActivatedRoute) { }
@@ -33,9 +35,15 @@ export class EditEmployeeComponent implements OnInit, OnDestroy {
       next: (data: Params) => {
         this.employeeId = +data['id'];
         this.isLoading = false;
-        console.log("iiiiiiiiiddddddddddd:", this.employeeId);
       }
     });
+
+    //WE get the profile photo : 
+    this.employeeService.getProfilePhoto(this.employeeId).subscribe(
+      (res: any) => {
+        this.profilePhoto = 'data:image/jpeg;base64,' + res.image;
+      }
+    );
 
     // We get the employee to be edited : 
     this.isLoading = true;

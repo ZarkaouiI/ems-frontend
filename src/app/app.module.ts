@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +11,7 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
 import { EmployeesListComponent } from './employees-list/employees-list.component';
 import { EmployeeCardComponent } from './employee-card/employee-card.component';
 import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
+import { PhotoProfileComponent } from './photo-profile/photo-profile.component';
 
 @NgModule({
   declarations: [
@@ -20,13 +21,15 @@ import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
     LoadingSpinnerComponent,
     EmployeesListComponent,
     EmployeeCardComponent,
-    EditEmployeeComponent
+    EditEmployeeComponent,
+    PhotoProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

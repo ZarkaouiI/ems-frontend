@@ -1,34 +1,33 @@
-import { NgFor } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
-import { Employee } from '../model/employee.model';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EmployeeService } from '../services/employee.service';
-import { Subscription } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-employee',
   templateUrl: './add-employee.component.html',
-  styleUrls: ['./add-employee.component.css']
+  styleUrls: ['./add-employee.component.css'],
 })
 export class AddEmployeeComponent implements OnInit, OnDestroy {
   isLoading = false;
   addEmployeeForm!: FormGroup;
-  message : string = '';
-  errorMessage : string = '';
+  message: string = '';
+  errorMessage: string = '';
 
-  constructor(private employeeService: EmployeeService, private router: Router) { }
+  constructor(
+    private employeeService: EmployeeService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.addEmployeeForm = new FormGroup({
-      'firstName': new FormControl('', [Validators.required]),
-      'lastName': new FormControl('', [Validators.required]),
-      'email': new FormControl('', [Validators.required, Validators.email]),
+      firstName: new FormControl('', [Validators.required]),
+      lastName: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
     });
   }
 
   onAddEmployee() {
-    
     this.isLoading = true;
     this.employeeService.addNewEmployee(this.addEmployeeForm.value).subscribe({
       next: () => {

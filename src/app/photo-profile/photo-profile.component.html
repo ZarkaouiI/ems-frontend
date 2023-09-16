@@ -1,0 +1,29 @@
+<div class="p-5 my-2 text-center bg-slate-100" *ngIf="successMessage">
+  <p class="text-slate-800 tracking-wider">{{ successMessage }}</p>
+</div>
+<form (ngSubmit)="onPhotoProfileUpload()">
+  <div class="flex items-center space-x-6 h-14 w-full my-5">
+    <div class="shrink-0">
+      <img *ngIf="profilePhoto"
+        class="h-16 w-16 object-cover border border-black rounded-full"
+        [src]="profilePhoto"
+        alt="Current profile photo"
+      />
+    </div>
+    <label class="block">
+      <span class="sr-only">Choose profile photo</span>
+
+      <input
+        type="file"
+        (change)="onPhotoProfileChange($event)"
+        class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-rose-700 hover:file:bg-violet-100"
+      />
+    </label>
+    <button
+      type="submit"
+      class="py-1 px-5 rounded-full text-white bg-rose-600 hover:bg-teal-500"
+    >
+      UPLOAD
+    </button>
+  </div>
+</form>

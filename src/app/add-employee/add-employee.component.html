@@ -6,55 +6,93 @@
       </h1>
     </div>
     <div class="p-5 my-2 text-center bg-slate-100" *ngIf="message">
-      <p class="text-green-600 tracking-wider">{{message}}</p>
+      <p class="text-green-600 tracking-wider">{{ message }}</p>
     </div>
     <div class="p-5 my-2 text-center bg-rose-100" *ngIf="errorMessage">
-      <p class="text-red-500 tracking-wider">{{errorMessage}}</p>
+      <p class="text-red-500 tracking-wider">{{ errorMessage }}</p>
     </div>
     <form (ngSubmit)="onAddEmployee()" [formGroup]="addEmployeeForm">
+      
       <div class="items-center justify-center h-14 w-full my-5">
         <label class="block my-2 text-slate-800 text-sm font-normal">
-          First name : <span class="text-red-500" *ngIf="!this.addEmployeeForm.controls['firstName'].valid && this.addEmployeeForm.controls['firstName'].touched">First name is required!</span>
+          First name :
+          <span
+            class="text-red-500"
+            *ngIf="
+              !this.addEmployeeForm.controls['firstName'].valid &&
+              this.addEmployeeForm.controls['firstName'].touched
+            "
+            >First name is required!</span
+          >
         </label>
-        <input 
-          type="text" 
+        <input
+          type="text"
           class="h-10 w-96 border p-2"
           formControlName="firstName"
-          >
+        />
       </div>
 
       <div class="items-center justify-center h-14 w-full my-5">
         <label class="block my-2 text-slate-800 text-sm font-normal">
-          Last name : <span class="text-red-500" *ngIf="!this.addEmployeeForm.controls['lastName'].valid && this.addEmployeeForm.controls['lastName'].touched">Last name is required!</span>
+          Last name :
+          <span
+            class="text-red-500"
+            *ngIf="
+              !this.addEmployeeForm.controls['lastName'].valid &&
+              this.addEmployeeForm.controls['lastName'].touched
+            "
+            >Last name is required!</span
+          >
         </label>
-        <input 
-          type="text" 
+        <input
+          type="text"
           class="h-10 w-96 border p-2"
           formControlName="lastName"
-          >
+        />
       </div>
 
       <div class="items-center justify-center h-14 w-full my-5">
         <label class="block my-2 text-slate-800 text-sm font-normal">
-          Email : <span class="text-red-500" *ngIf="!this.addEmployeeForm.controls['email'].valid && this.addEmployeeForm.controls['email'].touched">Email is required!</span>
+          Email :
+          <span
+            class="text-red-500"
+            *ngIf="
+              !this.addEmployeeForm.controls['email'].valid &&
+              this.addEmployeeForm.controls['email'].touched
+            "
+            >Email is required!</span
+          >
         </label>
-        <input 
-          type="email"  
+        <input
+          type="email"
           class="h-10 w-96 border p-2"
           formControlName="email"
-          >
+        />
       </div>
 
-      <div class="items-center justify-center h-14 w-full my-7 space-x-5" 
-      *ngIf="isLoading">
+      <div
+        class="items-center justify-center h-14 w-full my-7 space-x-5"
+        *ngIf="isLoading"
+      >
         <app-loading-spinner></app-loading-spinner>
       </div>
 
-      <div class="items-center justify-center h-14 w-full my-7 space-x-5" *ngIf="!isLoading">
-        <button type="submit" class="py-2 px-9 rounded text-white bg-sky-400 disabled:bg-sky-200 hover:bg-rose-600" [disabled]="addEmployeeForm.invalid">
+      <div
+        class="items-center justify-center h-14 w-full my-7 space-x-5"
+        *ngIf="!isLoading"
+      >
+        <button
+          type="submit"
+          class="py-2 px-9 rounded text-white bg-sky-400 disabled:bg-sky-200 hover:bg-rose-600"
+          [disabled]="addEmployeeForm.invalid"
+        >
           SAVE
         </button>
-        <button type="button" class="py-2 px-9 rounded text-white bg-indigo-800 hover:bg-teal-500" (click)="onClearForm()">
+        <button
+          type="button"
+          class="py-2 px-9 rounded text-white bg-indigo-800 hover:bg-teal-500"
+          (click)="onClearForm()"
+        >
           CLEAR
         </button>
       </div>
